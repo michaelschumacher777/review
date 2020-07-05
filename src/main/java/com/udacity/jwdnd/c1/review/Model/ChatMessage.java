@@ -5,10 +5,11 @@ import lombok.Setter;
 
 @Getter @Setter
 public class ChatMessage {
-    private String userName;
-    private String messageText;
+    private int messageId;
+    private String username;
+    private String messagetext;
 
     public ChatMessage(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 }
