@@ -13,6 +13,6 @@ public interface UserMapper {
 
     @Insert("INSERT into users (username, salt, password, firstname, lastname) " +
             "values (#{username}, #{salt}, #{password}, #{firstName}, #{lastName})")
-    @Options(useGeneratedKeys = true, keyProperty = "#{userid}")
+    @Options(useGeneratedKeys = false, keyProperty = "#{userid}")
     public Integer insert(User user);
 }

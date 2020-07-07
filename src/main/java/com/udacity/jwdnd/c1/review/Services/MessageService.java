@@ -3,30 +3,19 @@ package com.udacity.jwdnd.c1.review.Services;
 import com.udacity.jwdnd.c1.review.Mapper.MessagesMapper;
 import com.udacity.jwdnd.c1.review.Model.ChatForm;
 import com.udacity.jwdnd.c1.review.Model.ChatMessage;
-import lombok.Getter;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 
-@Component
-@Getter
+@Service
 public class MessageService {
 
     private MessagesMapper messagesMapper;
-//    private String message;
-//
-//    public MessageService(String message) {
-//        this.message = message;
-//    }
-//
-//    public String uppercase() {
-//        return this.message.toUpperCase();
-//    }
-//
-//    public String lowercase() {
-//        return this.message.toLowerCase();
-//    }
+
+    public MessageService(MessagesMapper messagesMapper) {
+        this.messagesMapper = messagesMapper;
+    }
 
     @PostConstruct
     public void postConstruct() {
