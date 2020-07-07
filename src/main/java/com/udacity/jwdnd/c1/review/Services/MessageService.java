@@ -1,5 +1,6 @@
 package com.udacity.jwdnd.c1.review.Services;
 
+import com.udacity.jwdnd.c1.review.Mapper.MessagesMapper;
 import com.udacity.jwdnd.c1.review.Model.ChatForm;
 import com.udacity.jwdnd.c1.review.Model.ChatMessage;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 public class MessageService {
 
-    private List<ChatMessage> chatMessages;
+    private MessagesMapper messagesMapper;
 //    private String message;
 //
 //    public MessageService(String message) {
@@ -36,15 +37,20 @@ public class MessageService {
         ChatMessage newChatMessage = new ChatMessage(chatForm.getUserName());
         switch (chatForm.getMessageType()) {
             case "Say":
-                newChatMessage.setMessageText(chatForm.getMessageText());
+                newChatMessage.setMessagetext(chatForm.getMessageText());
                 break;
             case "Shout":
-                newChatMessage.setMessageText(chatForm.getMessageText().toUpperCase());
+                newChatMessage.setMessagetext(chatForm.getMessageText().toUpperCase());
                 break;
             case "Whisper":
-                newChatMessage.setMessageText(chatForm.getMessageText().toLowerCase());
+                newChatMessage.setMessagetext(chatForm.getMessageText().toLowerCase());
                 break;
         }
-        this.chatMessages.add(newChatMessage);
+        messagesMapper.addMessage(newChatMessage);
+    }
+
+    public List<ChatMessage> getMessages() {
+        List<ChatMessage> chats = messagesMapper.findAllMessages();
+        return chats;
     }
 }

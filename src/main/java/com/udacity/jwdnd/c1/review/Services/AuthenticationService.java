@@ -1,7 +1,7 @@
 package com.udacity.jwdnd.c1.review.Services;
 
 import com.udacity.jwdnd.c1.review.Mapper.UserMapper;
-import com.udacity.jwdnd.c1.review.User;
+import com.udacity.jwdnd.c1.review.Model.User;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

@@ -1,6 +1,5 @@
 package com.udacity.jwdnd.c1.review;
 
-import com.udacity.jwdnd.c1.review.Services.MessageService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -18,15 +17,4 @@ public class ReviewApplication {
 		return "Hello, Spring!";
 	}
 
-	@Bean
-	public String uppercaseMessage(MessageService messageService) {
-		System.out.println("Creating uppercaseMessage bean.");
-		return messageService.uppercase();
-	}
-
-	@Bean
-	public String lowercaseMessage(MessageService messageService	) {
-		System.out.println("Creating lowercaseMessage bean.");
-		return messageService.lowercase();
-	}
 }

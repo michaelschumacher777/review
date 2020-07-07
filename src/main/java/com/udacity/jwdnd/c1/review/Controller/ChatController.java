@@ -2,6 +2,9 @@ package com.udacity.jwdnd.c1.review.Controller;
 
 import com.udacity.jwdnd.c1.review.Model.ChatForm;
 import com.udacity.jwdnd.c1.review.Services.MessageService;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,15 +24,22 @@ public class ChatController {
 
     @GetMapping
     public String getChatPage(ChatForm chatForm, Model model) {
-        model.addAttribute("chatMessages", this.messageService.getChatMessages());
+        model.addAttribute("chatMessages", this.messageService.getMessages());
         return "chat";
     }
 
     @PostMapping
     public String postChatMessage(ChatForm chatForm, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            chatForm.setUserName(authentication.getName());
+        } else {
+            chatForm.setUserName("unknown");
+        }
+
         this.messageService.addMessage(chatForm);
         chatForm.setMessageText("");  // Why do we clear this???
-        model.addAttribute("chatMessages", this.messageService.getChatMessages());
+        model.addAttribute("chatMessages", this.messageService.getMessages());
         return "chat";
     }
 

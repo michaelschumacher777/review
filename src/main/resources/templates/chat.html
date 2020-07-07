@@ -5,8 +5,6 @@
     <title>Let's Chat</title>
     <!--/*@thymesVar id="chatForm" type="com.udacity.jwdnd.c1.review.Model.ChatForm"*/-->
     <form th:object="${chatForm}" action="#" th:action="@{/chat}" method="post">
-        <label for="username">Username:</label>
-        <input id="username" type="text" th:field="*{username}">
         <label for="messageText">Message Text:</label>
         <input id="messageText" type="text" th:field="*{messageText}">
         <label for="messageType">Message Type: </label>
