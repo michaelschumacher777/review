@@ -24,12 +24,14 @@ public class ChatController {
 
     @GetMapping
     public String getChatPage(ChatForm chatForm, Model model) {
+        System.out.println("We are in getChatPage!");
         model.addAttribute("chatMessages", this.messageService.getMessages());
         return "chat";
     }
 
     @PostMapping
     public String postChatMessage(ChatForm chatForm, Model model) {
+        System.out.println("We are in postChatMessage");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             chatForm.setUserName(authentication.getName());
